@@ -31,10 +31,10 @@ function App() {
         <About/>
         <MuiThemeProvider theme={muiTheme}>
           <Syfr/>
+          <TicTacToe/>
+          <ThisPage/>
+          <Contact/>
         </MuiThemeProvider>
-        <TicTacToe/>
-        <ThisPage/>
-        <Contact/>
       </ThemeProvider>
     </React.Fragment>
   );

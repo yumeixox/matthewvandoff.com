@@ -34,7 +34,7 @@ function Hero() {
       '> hi_',
       '> my name is matthew_',
       '> i make web apps_',
-      '> take a look around'
+      '> take a look around_'
     ]
 
     const el = document.querySelector('.text')
