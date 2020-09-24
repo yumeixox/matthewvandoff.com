@@ -1,0 +1,115 @@
+import React, { useState } from 'react'
+import styled from 'styled-components'
+import TrackView from './track-view/container/track-view-container'
+import Nav from './nav/nav'
+import Player from './player/player'
+import theme from './stylesheets/theme'
+import Button from '@material-ui/core/Button'
+
+const Ssection = styled.section`
+  background: black;
+  height: 111vh;
+  /* border: 1px solid red; */
+  overflow: auto;
+  padding: 0.5rem 0 0 0;
+  position: relative;
+  .container {
+    margin: 0 auto;
+  }
+
+  .overlay {
+    box-sizing: border-box;
+    background: black;
+    height: inherit;
+    width: 99%;
+    position: absolute;
+    z-index: 10;
+    opacity: 0.98;
+    transition: opacity 1s ease-out;
+    overflow: auto;
+    .overlay-container {
+      margin: 3rem 0 0 3rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr;
+    }
+    h1 {
+      font-size: 2.25rem;
+    }
+    p {
+      font-size: 1rem;
+      padding: 2rem 0;
+      line-height: 1.85rem;
+      width: 45vw;
+    }
+    em {
+      color: ${theme.purple}
+    }
+    h2 {
+      font-size: 1.75rem;
+      color: ${theme.purple};
+    }
+    strong {
+      color: ${p => p.theme.pink};
+      display: block;
+    }
+    .button {
+      text-align: center;
+      color: ${theme.green};
+      display: block;
+      margin: 3rem auto 0 auto;
+    }
+    img {
+      height: 90vh;
+      width: 35vw;
+    }
+    .right {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+  .disabled {
+    z-index: 0;
+    opacity: 0;
+  }
+`
+
+function Syfr() {
+  const [open, setOpen] = useState(false)
+  return (
+    <Ssection>
+      <div className={open ? "overlay disabled" : "overlay"}>
+        <div className="overlay-container">
+          <div className="left">
+            <h1><em>SYFR.STUDIO</em></h1>
+            <p><em>SYFR</em> is a collaborative file management tool for musicians, built with creators in mind. It allows users to upload, download, and share their music to and from the cloud. It also allows users to organize their music in a way that is not provided by other cloud based file management services such as Dropbox or WeTransfer. Future versions will allow users to collaborate on tracks and projects within the app.</p>
+            <h2>On the technology</h2>
+            <p><em>SYFR</em> is built using serverless technology.
+            By leveraging AWS Lambda and Node.js we are able to create a highly scalable back end with little to no server maintenance.
+            For data storage it uses DynamoDB, AWS's NoSql database, to store meta-data and S3 to store the actual files.
+            Authentication is implemented with AWS Cognito, authorization is implemented using API Gateway.
+            On the front end SYFR is built using React/Redux</p>
+            <div className="info">
+              <strong>https://syfr.studio</strong>
+              <strong>SYFR is currently in closed beta, however a demo is available.</strong>
+              <strong>Most features are disabled.</strong>
+            </div>
+            
+          </div>
+          <div className="right">
+            <Button onClick={() => setOpen(true)} color="inherit" className="button" variant="outlined" size="large">Open Demo</Button>
+          </div>
+        </div>
+      </div>
+      <div className="container">
+        <Nav/>
+        <TrackView/>
+        <Player/>
+      </div>
+    </Ssection>
+  )
+}
+
+export default Syfr
