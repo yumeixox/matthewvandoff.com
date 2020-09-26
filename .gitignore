@@ -6,6 +6,7 @@ dist/*
 node_modules/
 *.log
 ts-build/*
+personal.psd
 
 # OS generated files
 .DS_Store

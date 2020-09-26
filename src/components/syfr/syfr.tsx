@@ -8,10 +8,10 @@ import Button from '@material-ui/core/Button'
 
 const Ssection = styled.section`
   background: black;
-  height: 111vh;
+  height: 109vh;
   /* border: 1px solid red; */
   overflow: auto;
-  padding: 0.5rem 0 0 0;
+  /* padding: 0.5rem 0 0 0; */
   position: relative;
   .container {
     margin: 0 auto;
@@ -21,7 +21,7 @@ const Ssection = styled.section`
     box-sizing: border-box;
     background: black;
     height: inherit;
-    width: 99%;
+    width: 100%;
     position: absolute;
     z-index: 10;
     opacity: 0.98;

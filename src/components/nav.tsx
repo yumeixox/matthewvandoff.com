@@ -16,6 +16,7 @@ const Snav = styled.nav`
     align-items: center;
     z-index: 99;
     padding: 0 3rem;
+    transform: scale(1);
   }
   .name {
     font-size: 1.75rem;
@@ -51,32 +52,24 @@ const Snav = styled.nav`
   }
 `
 function Nav() {
+  const duration = 1400
   const scrollOptions = {
     duration: 1500,
     delay: 100,
     smooth: 'easeInOutCubic',
-    // containerId: 'ContainerElementID',
   }
   function scrollToTop() {
     Scroll.animateScroll.scrollToTop(scrollOptions)
   }
   function nudge() {
+    setTimeout(() => { }, duration + 1)
     Scroll.Events.scrollEvent.register("end", function () {
       Scroll.animateScroll.scrollMore(1)
       Scroll.Events.scrollEvent.remove("end");
     });
   }
-  function scrollToAbout() {
-    const scroller = Scroll.scroller
-    scroller.scrollTo("about", {
-      duration: 1500,
-      delay: 100,
-      smooth: 'easeInOutCubic',
-      // containerId: 'ContainerElementID',
-    })
-    nudge()
-  }
-  
+
+  const offset = -44
   return (
     <Snav>
       <ul className="main">
@@ -90,18 +83,47 @@ function Nav() {
             spy={true}
             hashSpy={true}
             smooth="easeInOutCubic"
-            duration={1500}
-            delay={100}              
+            duration={duration}
+            delay={100}
+            offset={offset}          
           >
             <li
             className="glitch-parent"
-            onClick={() => scrollToAbout()}
+            // onClick={() => scrollToAbout()}
             >
               <h2 className="glitch" data-text="about">about</h2>
             </li>
           </Scroll.Link>
-          <li className="glitch-parent"><h2 className="glitch" data-text="projects">projects</h2></li>
-          <li className="glitch-parent"><h2 className="glitch" data-text="contact">contact</h2></li>
+          <Scroll.Link
+            activeClass="active"
+            to="projects"
+            spy={true}
+            hashSpy={true}
+            smooth="easeInOutCubic"
+            duration={duration}
+            delay={100}
+            offset={offset}
+            isDynamic
+          >
+            <li
+            className="glitch-parent"
+            onClick={() => nudge()}
+            >
+              <h2 className="glitch" data-text="projects">projects</h2>
+            </li>
+          </Scroll.Link>
+          <Scroll.Link
+            activeClass="active"
+            to="contact"
+            spy={true}
+            hashSpy={true}
+            smooth="easeInOutCubic"
+            duration={duration}
+            delay={100}
+            offset={offset}
+          >
+            <li className="glitch-parent"><h2 className="glitch" data-text="contact" onClick={() => nudge()}>contact</h2></li>
+          </Scroll.Link>
         </ul>
         <li className="theme-switch"><Switch/></li>
       </ul>

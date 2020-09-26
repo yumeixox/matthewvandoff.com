@@ -11,7 +11,7 @@ const Ssection = styled.section`
   color: white;
   display: flex;
   justify-content: center;
-
+  background: black;
   .text {
     position: absolute;
     margin: 28vh 0 0 0;

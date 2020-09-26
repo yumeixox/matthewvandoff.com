@@ -10,8 +10,9 @@ const Sdiv = styled.div`
   background: #322d35;
   color: #edd26d;
   position: relative;
-
+  user-select: none;
   #tic-tac-toe {
+    position: relative;
     h1 {
       text-align: center;
       font-size: 75px;
@@ -87,11 +88,7 @@ const Sdiv = styled.div`
       top: 40%;
       z-index: 2;
       width: 100%;
-      height: 100%;
       margin: 0 0 3rem 0;
-    }
-    .replay-container:hover {
-      cursor: pointer;
     }
     .replay {
       display: block;
@@ -109,6 +106,7 @@ const Sdiv = styled.div`
       background: #36ae9a;
       transform: rotate(360deg);
       background: #535b82;
+      cursor: pointer;
     }
     .replay:active {
       background: #20796a;
@@ -240,7 +238,7 @@ function TicTacToe() {
               This app was built using JavaScript / jQuery
             </p>
             <p className="github">
-              <a href="https://github.com/yumeixox/tic-tac-toe">
+              <a href="https://github.com/yumeixox/tic-tac-toe" target="_blank">
                 <AiFillGithub className="github-icon"/>
                 <em>https://github.com/yumeixox/tic-tac-toe</em>
               </a>

@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import { FiMail, FiSend } from 'react-icons/fi'
 import { FaLinkedin } from 'react-icons/fa'
 import { AiFillGithub } from 'react-icons/ai'
+import { TiDocumentText } from 'react-icons/ti'
 import { useForm } from 'react-hook-form'
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField'
@@ -37,12 +38,15 @@ const Sdiv = styled.div`
         color: lightblue;
       }
     }
-    .linkedin em, .github em {
+    .linkedin em, .github em, .resume em {
       color: lightblue;
     }
     .icon {
       width: 25px;
       height: 25px;
+    }
+    .resume {
+      margin: 1rem 0 0 0;
     }
   }
 
@@ -96,6 +100,20 @@ const Sdiv = styled.div`
 
 function Contact() {
   const { register, handleSubmit, errors } = useForm()
+  const [a, setA] = useState(Math.floor(Math.random() * 10) + 1)
+  const [b, setB] = useState(Math.floor(Math.random() * 10) + 1)
+  const [errorMessage, setErrorMessage] = useState(null)
+  const [successMessage, setSuccessMessage] = useState(null)
+
+  function submit(data) {
+    if (a + b == data.captchaAnswer) {
+      console.log("success!", data)
+    }
+    else {
+      setA(Math.floor(Math.random() * 10) + 1)
+      setB(Math.floor(Math.random() * 10) + 1)
+    }
+  }
   return (
     <Sdiv>
       <div className="left">
@@ -103,74 +121,86 @@ function Contact() {
         <p className="email"><FiMail className="icon"/><em>mvandoff@gmail.com</em></p>
         <p className="linkedin"><a href="https://www.linkedin.com/in/matthew-vandoff" target="_blank"><FaLinkedin className="icon"/><em>https://www.linkedin.com/in/matthew-vandoff</em></a></p>
         <p className="github"><a href="https://github.com/yumeixox" target="_blank"><AiFillGithub className="icon"/><em>https://github.com/yumeixox</em></a></p>
+        <p className="resume"><a href="##"><TiDocumentText className="icon"/><em>Resume</em></a></p> 
       </div>
 
       <div className="right">
         <h2 className="message">Send me a message, I'll get back to you expeditiously!</h2>
-        <div className="top-input">
+        <form>
+          <div className="top-input">
+            <TextField
+              label="Name"
+              name="name"
+              className="name"
+              variant="filled"
+              inputProps={{ maxLength: 60 }}
+              autoComplete="off"
+              inputRef={register({
+                required: true,
+              })}
+              error={errors.name ? true : false}
+              required
+            />
+            <TextField
+              label="Your Email"
+              name="email"
+              className="email"
+              variant="filled"
+              inputRef={register({
+                required: true,
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                  message: 'Invalid email address',
+                },
+              })}
+              autoComplete="off"
+              error={errors.email ? true : false}
+              required
+            />
+          </div>
           <TextField
-            label="Name"
-            name="name"
-            className="name"
+            label="Your Message"
+            name="message"
+            fullWidth
             variant="filled"
-            inputProps={{ maxLength: 60 }}
-            // autoFocus
+            className="notes"
+            multiline
+            inputProps={{ maxLength: 4000 }}
+            rows={11}
+            rowsMax={18}
+            style={{ marginTop: '10px', marginBottom: '6px' }}
             autoComplete="off"
             inputRef={register({
               required: true,
             })}
-            error={errors.name ? true : false}
+            error={errors.message ? true : false}
+            required
           />
-          <TextField
-            label="Your Email"
-            name="email"
-            className="email"
-            variant="filled"
-            inputProps={{ maxLength: 60 }}
-            // autoFocus
-            autoComplete="off"
-            inputRef={register({
-              required: true,
-            })}
-            error={errors.name ? true : false}
-          />
-        </div>
-        <TextField
-          label="Your Message"
-          name="versionNotes"
-          fullWidth
-          variant="filled"
-          className="notes"
-          multiline
-          inputProps={{ maxLength: 4000 }}
-          rows={11}
-          rowsMax={18}
-          style={{ marginTop: '10px', marginBottom: '6px' }}
-          autoComplete="off"
-          inputRef={register()}
-        />
-        <div className="captcha">
-          <p className="equation">2 + 5 = </p>
-          <TextField
-            name="captcha-answer"
-            variant="standard"
-            className="captcha-answer"
-            // inputProps={{ maxLength: 10 }}
-            autoComplete="off"
-            inputRef={register()}
-            // size="small"
-            inputProps={{ style: { fontSize: "2rem", textAlign: "center" } }}
-          />
-          <Button
-            variant="contained"
-            className="submit-button"
-            color="primary"
-            size="large"
-            startIcon={<FiSend/>}
-          >            
-            Send
-          </Button>
-        </div>
+          <div className="captcha">
+            <p className="equation">{a} + {b} = </p>
+            <TextField
+              name="captchaAnswer"
+              variant="standard"
+              className="captcha-answer"
+              autoComplete="off"
+              inputRef={register({
+                required: true,
+              })}
+              inputProps={{ style: { fontSize: "2rem", textAlign: "center" } }}
+              error={errors.captchaAnswer ? true : false}
+            />
+            <Button
+              variant="contained"
+              className="submit-button"
+              color="primary"
+              size="large"
+              startIcon={<FiSend/>}
+              onClick={handleSubmit(submit)}
+            >
+              Send
+            </Button>
+          </div>
+        </form>
       </div>
     </Sdiv>
   )

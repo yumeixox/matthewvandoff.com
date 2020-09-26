@@ -1,6 +1,6 @@
 import React from 'react';
 import { hot } from "react-hot-loader/root"
-import { createGlobalStyle, ThemeProvider } from 'styled-components'
+import  { createGlobalStyle, ThemeProvider } from 'styled-components'
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/core/styles'
 import Nav from './components/nav'
 import Hero from './components/hero'
@@ -14,12 +14,14 @@ import theme from './global-styles/theme'
 import styles from './global-styles/styles'
 import tables from './components/syfr/stylesheets/tables'
 import muiTheme from './components/syfr/stylesheets/mui-theme'
+import * as Scroll from 'react-scroll'
 
 const GlobalStyles = createGlobalStyle`
   ${reset}
   ${styles}
   ${tables}
 `
+const Element = Scroll.Element
 
 function App() {
   return (
@@ -28,13 +30,19 @@ function App() {
       <ThemeProvider theme={theme}>
         <Nav/>
         <Hero/>
-        <About/>
-        <MuiThemeProvider theme={muiTheme}>
-          <Syfr/>
-          <TicTacToe/>
-          <ThisPage/>
-          <Contact/>
-        </MuiThemeProvider>
+        <Element name="about" id="about">
+          <About/>
+        </Element>
+          <MuiThemeProvider theme={muiTheme}>
+            <Element name="projects" id="projects">
+              <Syfr/>
+              <TicTacToe/>
+              <ThisPage/>
+            </Element>
+            <Element name="contact" id="contact">
+              <Contact/>
+            </Element>
+          </MuiThemeProvider>
       </ThemeProvider>
     </React.Fragment>
   );
