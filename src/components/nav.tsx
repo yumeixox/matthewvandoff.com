@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components'
 import Switch from './switch'
 import * as Scroll from 'react-scroll'
+import Hamburger from './hamburger'
 
 const Snav = styled.nav`
   .main {
     box-sizing: border-box;
-    width: 100%;
+    width: 100vw;
     height: 7vh;
-    position: fixed;
-    background: #2A2A2A;
+    position: fixed;    
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -17,6 +17,11 @@ const Snav = styled.nav`
     z-index: 99;
     padding: 0 3rem;
     transform: scale(1);
+    background: ${p => p.theme.jet};
+    transition: background-color 1s ease;
+  }
+  .top {
+    background: transparent;
   }
   .name {
     font-size: 1.75rem;
@@ -34,10 +39,10 @@ const Snav = styled.nav`
     align-items: center;
     transition: background-color 0.5s ease;
     font-size: 1rem;
-    padding: 0 15% 0 0;
+    /* padding: 0 15% 0 0; */
   }
   .options li {
-    padding: 0 2rem;
+    padding: 0 1.75rem;
     height: 40px;
     display: flex;
     align-items: center;
@@ -50,9 +55,41 @@ const Snav = styled.nav`
   .active {
     text-decoration: line-through;
   }
+  .hamburger {
+    display: none;
+  }
+
+  
+  @media all and (max-width: 920px) {
+    .options {
+      display: none;
+    }
+    .theme-switch {
+      display: none;
+    }
+    .hamburger {
+      display: block;
+      padding: 0.25em 0em 0 0;
+    }
+  
+  }
+  @media all and (max-width: 570px) {
+    .name {
+      font-size: 1.1rem;
+      user-select: none;
+    }
+    .main {
+      justify-content: space-between;
+    }
+    .hamburger {
+      /* padding: 2em 0em 0 0; */
+    }
+  }
 `
+
 function Nav() {
-  const duration = 1400
+  const duration = 1600
+  const offset = -44
   const scrollOptions = {
     duration: 1500,
     delay: 100,
@@ -62,17 +99,39 @@ function Nav() {
     Scroll.animateScroll.scrollToTop(scrollOptions)
   }
   function nudge() {
+    setTimeout(() => { }, duration + 111)
+    Scroll.Events.scrollEvent.register("end", function () {
+      Scroll.animateScroll.scrollMore(4)
+      Scroll.Events.scrollEvent.remove("end");
+    });
     setTimeout(() => { }, duration + 1)
     Scroll.Events.scrollEvent.register("end", function () {
       Scroll.animateScroll.scrollMore(1)
       Scroll.Events.scrollEvent.remove("end");
     });
   }
-
-  const offset = -44
+  const [atTop, setAtTop] = useState(true)
+  useEffect(() => {
+    let intersectOptions = {
+      root: null,
+      rootMargin: '0px',
+      threshold: 0.8
+    }
+    let observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        setAtTop(true)
+      }
+      else {
+        setAtTop(false)
+      }
+    }, intersectOptions);
+    let target:any = document.querySelector('#hero')
+    observer.observe(target)
+  })
+  
   return (
-    <Snav>
-      <ul className="main">
+    <Snav id="nav">
+      <ul className={atTop ? "main top" : "main"}>
         <li className="name glitch" data-text="matthew van doff" onClick={() => scrollToTop()}>
           <h1>matthew van doff</h1>
         </li>
@@ -94,6 +153,7 @@ function Nav() {
               <h2 className="glitch" data-text="about">about</h2>
             </li>
           </Scroll.Link>
+          
           <Scroll.Link
             activeClass="active"
             to="projects"
@@ -126,6 +186,9 @@ function Nav() {
           </Scroll.Link>
         </ul>
         <li className="theme-switch"><Switch/></li>
+        <li className="hamburger">
+          <Hamburger/>  
+        </li>
       </ul>
     </Snav>
   )

@@ -58,7 +58,8 @@ const config = {
     overlay: true,
     hot: true,
     clientLogLevel: 'silent',
-    port: 3000
+    port: 3000,
+    disableHostCheck: true
   },
   plugins: [
     new HtmlWebpackPlugin({

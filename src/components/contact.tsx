@@ -76,8 +76,12 @@ const Sdiv = styled.div`
     .captcha {
       margin: 1rem 0rem 0 0;
       display: flex;
-      /* background: blue; */
+      background: #3f4764;
+      border: 2px dashed white;
+      border-radius: 5px;
+      padding: 0.5em;
       justify-content: flex-end;
+      /* filter: drop-shadow(0.5em 0.5em 0.5rem black); */
     }
     .equation {
       /* border: 1px solid red; */

@@ -48,7 +48,7 @@ const Sdiv = styled.div`
     /* width: 50px;
     height: 24px; */
     width: 70px;
-    height: 35px;
+    height: 30px;
     padding: 0;
     border-radius: 30px;
     background-color: #4D4D4D;
@@ -79,7 +79,7 @@ const Sdiv = styled.div`
     margin-top: auto;
     margin-bottom: auto;
     line-height: 0;
-    left: 8px;
+    left: 10px;
     opacity: 0;
     -webkit-transition: opacity 0.25s ease;
     -moz-transition: opacity 0.25s ease;
@@ -102,7 +102,7 @@ const Sdiv = styled.div`
     margin-top: auto;
     margin-bottom: auto;
     line-height: 0;
-    right: 10px;
+    right: 14px;
     opacity: 1;
     -webkit-transition: opacity 0.25s ease;
     -moz-transition: opacity 0.25s ease;
@@ -118,10 +118,8 @@ const Sdiv = styled.div`
     position: absolute;
     top: 1px;
     left: 1px;
-    /* width: 22px;
-    height: 22px; */
-    width: 34px;
-    height: 34px;
+    width: 30px;
+    height: 30px;
     border-radius: 50%;
     background-color: #FAFAFA;
 
@@ -135,7 +133,7 @@ const Sdiv = styled.div`
   }
 
   .react-toggle--checked .react-toggle-thumb {
-    left: 38px;
+    left: 42px;
     border-color: #19AB27;
   }
 

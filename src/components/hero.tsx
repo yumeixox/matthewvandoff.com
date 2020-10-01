@@ -1,20 +1,37 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import styled from 'styled-components'
 import TextScramble from './vendor/scramble'
 import './stylesheets/arrow.scss'
 import * as Scroll from 'react-scroll'
+import gif from '../assets/images/static.gif'
 
 const Ssection = styled.section`
   height: 100vh;
-  padding: 10vh 0 0 0;
-  font-size: 3rem;
+  font-size: 2rem;
   color: white;
   display: flex;
   justify-content: center;
-  background: black;
+  /* background: url(${gif});
+  background-repeat: no-repeat;
+  background-size: cover; */
+  
+  .overlay {
+    width: 100%;
+    height: 110vh;
+    position: absolute;
+    background: black;
+    top: 0;
+    opacity: 0.8;
+    transition: opacity 15s ease-out;
+  }
+  .disabled {
+    opacity: 1
+  }
   .text {
     position: absolute;
-    margin: 28vh 0 0 0;
+    margin: 35vh 0 0 0;
+    color: white;
+    padding: 0 1vw;
   }
   .arrow {
     opacity: 0;
@@ -29,7 +46,11 @@ const Ssection = styled.section`
 `
 
 function Hero() {
+  const [noise, setNoise] = useState(false)
+
+
   useEffect(() => {
+    setNoise(true)
     const phrases = [
       '> hi_',
       '> my name is matthew_',
@@ -76,14 +97,14 @@ function Hero() {
   }
   
   return (
-    <Ssection>
-      <div className="text">
+    <Ssection id="hero">
+      <div className={noise ? "overlay" : "overlay disabled"}></div>
+      <div className="text"></div>
+      <div className="arrow" onClick={() => scrollToAbout()}>
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
-        <div className="arrow" onClick={() => scrollToAbout()}>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
     </Ssection>
   )
 }

@@ -1,10 +1,7 @@
-import React, { useState, useRef, useEffect } from 'react'
-// import { connect } from 'react-redux'
+import React, { useState, useRef } from 'react'
 import styled from 'styled-components'
 import { MdOpenInBrowser } from 'react-icons/md'
 import logo from '../../../../assets/images/logo.svg'
-// import { saveTrackArt, getTrackArt } from '~redux/api/api-actions.js'
-// import { selectTrack } from '~redux/global/global-actions.js'
 
 const SAlbumArt = styled.div`
   .default-img-container {

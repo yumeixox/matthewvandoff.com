@@ -10,23 +10,20 @@ const styles = css`
   }
 
   body {
+    /* min-width: 600px; */
     background: ${theme.jet};
     font-family: 'Exo', sans-serif;
     color: white;
-    font-size: 18px;
+    font-size: 1.5vw;
     margin: 0 auto;
-    max-width: 100vw;
     box-sizing: border-box;
   }
-
-
   body::-webkit-scrollbar {
     width: 10px;
   }
   body::-webkit-scrollbar-track {
     background: transparent;
     margin: 20px 0 20px 0;
-    border: solid 3px transparent;
   }
   body::-webkit-scrollbar-thumb {
     background-color: grey;
@@ -41,6 +38,10 @@ const styles = css`
     background: lightgrey;
     width: 20;
     border-radius: 0;
+  }
+
+  @media all and (max-width: 1024px) {
+    
   }
 `
 

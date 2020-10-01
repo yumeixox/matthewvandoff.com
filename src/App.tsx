@@ -33,16 +33,16 @@ function App() {
         <Element name="about" id="about">
           <About/>
         </Element>
-          <MuiThemeProvider theme={muiTheme}>
-            <Element name="projects" id="projects">
-              <Syfr/>
-              <TicTacToe/>
-              <ThisPage/>
-            </Element>
-            <Element name="contact" id="contact">
-              <Contact/>
-            </Element>
-          </MuiThemeProvider>
+        {/* <MuiThemeProvider theme={muiTheme}>
+          <Element name="projects" id="projects">
+            <Syfr/>
+            <TicTacToe/>
+            <ThisPage/>
+          </Element>
+          <Element name="contact" id="contact">
+            <Contact/>
+          </Element>
+        </MuiThemeProvider> */}
       </ThemeProvider>
     </React.Fragment>
   );
