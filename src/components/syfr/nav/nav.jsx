@@ -26,7 +26,7 @@ const SNav = styled.nav`
 
   .logo img {
     width: 200px;
-    padding: 0px 0 0 1.75em;
+    padding: 0px 0 0 2vw;
   }
 
   .avatar-user {
@@ -34,26 +34,21 @@ const SNav = styled.nav`
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
-    padding: 0 4em 0 0;
-    ${'' /* color: ${p => p.theme.green}; */}
+    padding: 0 4vw 0 0;
   }
 
   .username,
   .avatar {
     padding: 0 8px 0 8px;
   }
-
   .username {
     font-weight: bold;
   }
+  h2 {
+    font-size: 1rem;
+  }
 `
 
-// function mapStateToProps(state) {
-//   return {
-//     userInfo: state.api.userInfo,
-//   }
-// }
-// const NavContainer = connect(mapStateToProps, null)(Nav)
 
 function Nav(props) {
   const [menuAnchorEl, setMenuAnchorEl] = React.useState(null)

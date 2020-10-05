@@ -37,6 +37,15 @@ const Sdiv = styled.div`
   a:hover {
     color: lightblue;
   }
+
+  @media all and (max-width: 600px) {
+    p {
+      width: 90%;
+    }
+    a {
+      font-size: 0.8rem;
+    }
+  }
 `
 
 function ThisPage() {

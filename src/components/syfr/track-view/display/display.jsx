@@ -3,12 +3,12 @@ import styled from 'styled-components'
 import AlbumArt from './album-art.jsx'
 
 const SDiv = styled.div`
-  ${'' /* background: darkblue; */}
+  /* background: darkblue; */
   display: grid;
   grid-template-columns: 1.15fr 7fr;
   grid-template-rows: 1fr;
   width: 100%;
-  ${'' /*  HEIGHT NEEDS TO BE SET ON THE <IMG>  */}
+  /*  HEIGHT NEEDS TO BE SET ON THE <IMG>  */
   margin: 1em 0 0 0em;
   user-select: none;
 
@@ -23,6 +23,14 @@ const SDiv = styled.div`
   }
   .genre {
     font-size: 1.25em;
+  }
+  @media all and (max-width: 570px) {
+    .title {
+      font-size: 1.5em;
+    }
+    .genre {
+      font-size: 0.85em;
+    }
   }
 `
 

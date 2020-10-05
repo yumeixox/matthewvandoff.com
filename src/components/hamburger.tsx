@@ -5,7 +5,7 @@ import * as Scroll from 'react-scroll'
 import Switch from './switch'
 
 const Sbutton = styled.button`
-  padding-bottom: 2.5rem;
+  /* padding-bottom: 2.5rem; */
 `
 
 const Smenu = styled.div`
@@ -112,6 +112,7 @@ function Hamburger() {
               duration={duration}
               delay={100}
               offset={offset}
+              onClick={() => setMenuOpen(false)}
             >
               Projects
           </Scroll.Link>
@@ -126,6 +127,7 @@ function Hamburger() {
               duration={duration}
               delay={100}
               offset={offset}
+              onClick={() => setMenuOpen(false)}
             >
               Contact
           </Scroll.Link>

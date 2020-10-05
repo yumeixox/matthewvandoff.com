@@ -6,7 +6,7 @@ import { AiFillGithub } from 'react-icons/ai'
 
 const Sdiv = styled.div`
   box-sizing: border-box;
-  height: 100vh;
+  height: 115vh;
   background: #322d35;
   color: #edd26d;
   position: relative;
@@ -25,8 +25,8 @@ const Sdiv = styled.div`
       flex-wrap: wrap;
       list-style: none;
       background: transparent;
-      width: 485px;
-      height: 485px;
+      width: 380px;
+      height: 380px;
       margin: 0 auto;
       padding: 0;
     }
@@ -48,11 +48,11 @@ const Sdiv = styled.div`
       pointer-events: none;
     }
     .mark {
-      font-size: 145px;
+      font-size: 125px;
       font-family: 'Nothing You Could Do', cursive;
       position: absolute;
-      left: 2.5vw;
-      top: 2vh;
+      left: 20%;
+      top: 12%;
       text-transform: uppercase;
     }
     .faded {
@@ -163,9 +163,6 @@ const Sdiv = styled.div`
   }
 
   .overlay-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr;
     height: 100vh;
     h1 {
       font-size: 2.25rem;
@@ -174,7 +171,7 @@ const Sdiv = styled.div`
       font-size: 1rem;
       padding: 2rem 0;
       line-height: 1.85rem;
-      width: 45vw;
+      width: 80vw;
       color: white;
     }
     .left {
@@ -187,7 +184,7 @@ const Sdiv = styled.div`
       align-items: center;
     }
     .info {
-      padding: 2rem 0 0 0;
+      padding: 0rem 0 0 0;
     }
     .github {
       padding: 0.2em 0 0 0;
@@ -196,6 +193,7 @@ const Sdiv = styled.div`
       display: flex;
       flex-direction: row;
       align-items: center;
+      margin-bottom: 2rem;
       .github-icon {
         height: 25px;
         width: 25px;
@@ -214,7 +212,44 @@ const Sdiv = styled.div`
   .disabled {
       z-index: 0;
       opacity: 0;
+  }
+
+  @media all and (min-width: 920px) {
+    .overlay-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr;
+      /* height: 135vh; */
+      .left {
+        padding: 3rem 0 0 3rem;
+        display: block;
+      }
+      .right {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+      }
+      p {
+        font-size: 1rem;
+        padding: 2rem 0;
+        line-height: 1.85rem;
+        color: white;
+        width: 45vw;
+      }
+      h1, h2, p, .info {
+        width: 100% !important;
+      }
     }
+    .grid {
+      width: 485px !important;
+      height: 485px !important;      
+    }
+    .mark {
+      font-size: 145px !important;
+      /* top: 3vh !important; */
+    }
+  }
 `
 
 function TicTacToe() {

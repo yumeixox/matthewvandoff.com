@@ -14,14 +14,6 @@ const SAlbumArt = styled.div`
     background: linear-gradient(rgb(44, 32, 79), transparent);
     border-radius: 15px;
   }
-  .user-img-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    width: 230px;
-    height: 230px;
-  }
   img {
     display: block;
     transition: filter 0.6s ease;
@@ -32,10 +24,6 @@ const SAlbumArt = styled.div`
     width: 150px;
     height: 150px;
     margin: 0 auto;
-  }
-  .user-image {
-    width: 230px;
-    height: 230px;
   }
   .img-container:hover {
     cursor: pointer;
@@ -56,22 +44,18 @@ const SAlbumArt = styled.div`
   input[type='file'] {
     display: none;
   }
+  @media all and (max-width: 570px) {
+    .default-img-container {
+      width: 150px;
+      height: 150px;
+    }
+    .default-image {
+      width: 100px;
+      height: 100px;
+    }
+  }
 `
-// function mapStateToProps(state) {
-//   return {
-//     userSub: state.api.userSub,
-//     selectedTrack: state.global.selectedTrack,
-//   }
-// }
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     saveTrackArt: (userSub, trackSub, img) => dispatch(saveTrackArt(userSub, trackSub, img)),
-//     getTrackArt: (userSub, trackSub, fileName) =>
-//       dispatch(getTrackArt(userSub, trackSub, fileName)),
-//     selectTrack: (track) => dispatch(selectTrack(track)),
-//   }
-// }
-// const AlbumArtContainer = connect(mapStateToProps, mapDispatchToProps)(AlbumArt)
+
 
 function AlbumArt() {
   const [userImage, setUserImage] = useState(null)
@@ -79,43 +63,6 @@ function AlbumArt() {
   function handleClick() {
     // inputEl.current.click()
   }
-
-  // async function handleChange(e) {
-  //   if (e.target.files[0]) {
-  //     const file = e.target.files[0]
-  //     try {
-  //       await props.saveTrackArt(props.userSub, props.selectedTrack.trackSub, file)
-  //       const url = URL.createObjectURL(file)
-  //       setUserImage(url)
-  //       const newTrack = props.selectedTrack
-  //       newTrack.trackArt = file.name
-  //       props.selectTrack(newTrack)
-  //       // window.localStorage.setItem(file.name, url)
-  //     } catch (err) {
-  //       console.log(err)
-  //     }
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   if (props.selectedTrack.trackArt) {
-  //     async function getTrackArt() {
-  //       try {
-  //         const imgUrl = await props.getTrackArt(
-  //           props.userSub,
-  //           props.selectedTrack.trackSub,
-  //           props.selectedTrack.trackArt
-  //         )
-  //         setUserImage(imgUrl)
-  //       }
-  //       catch(err) {
-  //         console.log("Error getting track art", err)
-  //         return null
-  //       }
-  //     }
-  //     getTrackArt()
-  //   }
-  // }, [])
 
   return (
     <SAlbumArt className="album-art">

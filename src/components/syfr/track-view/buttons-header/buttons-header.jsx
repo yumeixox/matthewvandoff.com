@@ -14,14 +14,14 @@ const SDiv = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  width: 100%;
   margin: 0;
 
   button {
     border-radius: 0;
-    padding: 0.4em;
+    padding: 0.3rem 0.4em;
     display: flex;
     justify-content: space-around;
+    font-size: 0.9rem;
   }
   .back {
     border: 2px solid ${theme.purple};
@@ -57,6 +57,30 @@ const SDiv = styled.div`
   .share:hover {
     background: darkgrey;
   }
+  @media all and (max-width: 920px) {
+    button {
+      font-size: 0.8rem;
+      padding: 0.4em 0.4em;
+      em {
+        display: none;
+      }
+      p {
+        display: none;
+      }
+    }
+  }
+  /* @media all and (max-width: 570px) {
+    button {
+      font-size: 10px;
+
+      em {
+        display: none;
+      }
+      p {
+        display: none;
+      }
+    }
+  } */
 `
 
 function ButtonsHeader(props) {

@@ -11,9 +11,10 @@ const Ssection = styled.section`
   color: white;
   display: flex;
   justify-content: center;
-  /* background: url(${gif});
+  background: url(${gif});
   background-repeat: no-repeat;
-  background-size: cover; */
+  background-size: cover;
+  -webkit-font-smoothing: antialiased;
   
   .overlay {
     width: 100%;
@@ -43,6 +44,7 @@ const Ssection = styled.section`
   .arrow:hover {
     cursor: pointer;
   }
+  
 `
 
 function Hero() {

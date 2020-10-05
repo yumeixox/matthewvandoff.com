@@ -14,9 +14,10 @@ const styles = css`
     background: ${theme.jet};
     font-family: 'Exo', sans-serif;
     color: white;
-    font-size: 1.5vw;
+    font-size: 16px;
     margin: 0 auto;
     box-sizing: border-box;
+    /* -webkit-font-smoothing: antialiased; */
   }
   body::-webkit-scrollbar {
     width: 10px;
@@ -38,10 +39,6 @@ const styles = css`
     background: lightgrey;
     width: 20;
     border-radius: 0;
-  }
-
-  @media all and (max-width: 1024px) {
-    
   }
 `
 

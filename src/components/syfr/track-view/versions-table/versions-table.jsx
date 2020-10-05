@@ -13,7 +13,7 @@ const SDiv = styled.div`
   margin: 1.5em 0 0 0;
   padding: 0.5em 0 0 0;
   border-top: 2px solid ${theme.blue};
-
+  
   .rdt_TableCol {
     color: ${theme.blue};
   }

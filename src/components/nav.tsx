@@ -19,6 +19,7 @@ const Snav = styled.nav`
     transform: scale(1);
     background: ${p => p.theme.jet};
     transition: background-color 1s ease;
+    user-select: none;
   }
   .top {
     background: transparent;
@@ -69,7 +70,7 @@ const Snav = styled.nav`
     }
     .hamburger {
       display: block;
-      padding: 0.25em 0em 0 0;
+      padding: 0.15em 0em 0 0;
     }
   
   }

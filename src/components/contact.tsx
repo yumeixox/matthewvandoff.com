@@ -80,7 +80,7 @@ const Sdiv = styled.div`
       border: 2px dashed white;
       border-radius: 5px;
       padding: 0.5em;
-      justify-content: flex-end;
+      justify-content: center;
       /* filter: drop-shadow(0.5em 0.5em 0.5rem black); */
     }
     .equation {
@@ -98,6 +98,17 @@ const Sdiv = styled.div`
     .submit-button {
       margin-left: 1.5em;
       align-self: center;
+    }
+  }
+
+  @media all and (max-width: 920px) {
+    display: block;
+
+    .left {
+      padding-bottom: 0;
+    }
+    .equation {
+      font-size: 1.8rem !important;
     }
   }
 `

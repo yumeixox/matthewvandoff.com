@@ -33,7 +33,7 @@ function App() {
         <Element name="about" id="about">
           <About/>
         </Element>
-        {/* <MuiThemeProvider theme={muiTheme}>
+        <MuiThemeProvider theme={muiTheme}>
           <Element name="projects" id="projects">
             <Syfr/>
             <TicTacToe/>
@@ -42,7 +42,7 @@ function App() {
           <Element name="contact" id="contact">
             <Contact/>
           </Element>
-        </MuiThemeProvider> */}
+        </MuiThemeProvider>
       </ThemeProvider>
     </React.Fragment>
   );

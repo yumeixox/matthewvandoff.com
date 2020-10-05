@@ -5,7 +5,7 @@ import './stylesheets/arrow.scss'
 
 const Ssection = styled.section`
   position: relative;
-  font-size: 0.9rem;
+  font-size: 1rem;
   
   .about {
     box-sizing: border-box;
@@ -17,18 +17,25 @@ const Ssection = styled.section`
     line-height: 35px;
     display: flex;
     align-items: center;
+    /* text-align: justify; */
+  }
+  p {
+    text-indent: 5%;
   }
   .arrow {
     cursor: pointer;
-    padding: 0 0 7rem 0;
+    padding: 0 0 0rem 0;
   }
   @media all and (max-width: 550px) {
     .about {
-      padding: 0 15% 14rem 15%;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
+      padding: 0 10% 9rem 10%;
+      position: relative;
+      line-height: 33px;
     }
     .arrow {
-      padding: 0 0 3rem 0;
+      bottom: 5rem;
+      transform: rotate(180deg);
     }
   }
 `
