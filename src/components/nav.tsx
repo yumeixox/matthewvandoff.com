@@ -40,11 +40,14 @@ const Snav = styled.nav`
     align-items: center;
     transition: background-color 0.5s ease;
     font-size: 1rem;
-    /* padding: 0 15% 0 0; */
+    height: 100%;
+  }
+  .options a {
+    height: 100%;
   }
   .options li {
     padding: 0 1.75rem;
-    height: 40px;
+    height: 100%;
     display: flex;
     align-items: center;
     transition: background-color 0.5s ease-out;
@@ -102,7 +105,7 @@ function Nav() {
   function nudge() {
     setTimeout(() => { }, duration + 111)
     Scroll.Events.scrollEvent.register("end", function () {
-      Scroll.animateScroll.scrollMore(4)
+      Scroll.animateScroll.scrollMore(400)
       Scroll.Events.scrollEvent.remove("end");
     });
     setTimeout(() => { }, duration + 1)
@@ -145,7 +148,8 @@ function Nav() {
             smooth="easeInOutCubic"
             duration={duration}
             delay={100}
-            offset={offset}          
+            offset={offset}
+            onClick={() => nudge()}        
           >
             <li
             className="glitch-parent"
@@ -182,11 +186,12 @@ function Nav() {
             duration={duration}
             delay={100}
             offset={offset}
+            onClick={() => nudge()}
           >
             <li className="glitch-parent"><h2 className="glitch" data-text="contact" onClick={() => nudge()}>contact</h2></li>
           </Scroll.Link>
         </ul>
-        <li className="theme-switch"><Switch/></li>
+        {/* <li className="theme-switch"><Switch/></li> */}
         <li className="hamburger">
           <Hamburger/>  
         </li>

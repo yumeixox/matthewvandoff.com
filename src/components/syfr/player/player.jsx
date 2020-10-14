@@ -23,14 +23,14 @@ const SPlayer = styled.div`
     justify-content: space-around;
     align-items: center;
     padding: 0 0em 0.5em 0.6em;
-    margin: 0.4em 0 0 0;
+    margin: 0.45em 0 0 0;
   }
   .control-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 53px;
-    padding: 0 0.25em 0 0.55em;
+    padding: 0 0.25em 0 0.4em;
   }
   .progress-time-container {
     display: flex;
@@ -57,7 +57,7 @@ const SPlayer = styled.div`
     background-color: #40416a;
   }
   progress[value]::-webkit-progress-value {
-    background: linear-gradient(to left, ${(props) => props.theme.purple}, #222632);
+    background: linear-gradient(to left, #8A02FF, black);
   }
   .meta-container {
     display: block;
@@ -78,37 +78,13 @@ const SPlayer = styled.div`
 
 function Player() {
   useEffect(() => {
-    if (true) {
-      Amplitude.init({ songs: [{ name: 'SYFR.STUDIO', url: '#' }] })
-    } else {
-      playTrack()
-    }
+    Amplitude.init({
+      songs: [{ name: 'SYFR.STUDIO', url: '#' }],      
+    })
     return () => {
       Amplitude.stop()
     }
   })
-
-  // async function playTrack() {
-  //   const data = {
-  //     type: 'stream',
-  //     trackInfo: props.playingTrack,
-  //     versionSub: props.playingVersionSub,
-  //   }
-  //   const res = await props.downloadFile(props.userSub, data)
-  //   Amplitude.init({
-  //     songs: [{ name: props.playingTrack.title, url: res.data }],
-  //     callbacks: {
-  //       pause: () => {
-  //         props.updatePlayerStatus('paused')
-  //       },
-  //       play: () => {
-  //         props.updatePlayerStatus('playing')
-  //       },
-  //     },
-  //   })
-  //   const playButton = document.getElementById('play-pause')
-  //   playButton.click()
-  // }
 
   function handleProgressClick(e) {
     const offset = e.currentTarget.getBoundingClientRect()
@@ -123,7 +99,7 @@ function Player() {
       <div id="single-song-player">
         <div className="player-main">
           <div className="control-container">
-            <Play />
+            <Play/>
             <Volume amplitude={Amplitude} />
           </div>
 

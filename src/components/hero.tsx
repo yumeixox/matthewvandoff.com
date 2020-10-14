@@ -8,7 +8,6 @@ import gif from '../assets/images/static.gif'
 const Ssection = styled.section`
   height: 100vh;
   font-size: 2rem;
-  color: white;
   display: flex;
   justify-content: center;
   background: url(${gif});
@@ -37,9 +36,11 @@ const Ssection = styled.section`
   .arrow {
     opacity: 0;
     transition: opacity 5s ease;
+    pointer-events: none;
   }
   .reveal {
     opacity: 1;
+    pointer-events: all;
   }
   .arrow:hover {
     cursor: pointer;
@@ -54,10 +55,10 @@ function Hero() {
   useEffect(() => {
     setNoise(true)
     const phrases = [
-      '> hi_',
-      '> my name is matthew_',
-      '> i make web apps_',
-      '> take a look around_'
+      '> hi',
+      '> my name is matthew',
+      '> i make web apps',
+      '> take a look around'
     ]
 
     const el = document.querySelector('.text')

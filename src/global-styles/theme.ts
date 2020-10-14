@@ -3,7 +3,8 @@ const theme = {
   red: "#964F4B",
   pink: "#CA9197",
   grey: "#5F615D",
-  green: "#8C8F72"
+  green: "#8C8F72",
+  purple: "#8A02FF"
 }
 
 export default theme

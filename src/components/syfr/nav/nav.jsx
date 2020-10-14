@@ -1,6 +1,4 @@
 import React from 'react'
-// import { connect } from 'react-redux'
-// import { NavLink } from 'react-router-dom'
 import styled from 'styled-components'
 import logo from '../../../assets/images/logo.svg'
 import Avatar from '../common/avatar/avatar.jsx'
@@ -50,12 +48,7 @@ const SNav = styled.nav`
 `
 
 
-function Nav(props) {
-  const [menuAnchorEl, setMenuAnchorEl] = React.useState(null)
-  function handleProfileClick(e) {
-    setMenuAnchorEl(e.currentTarget)
-  }
-
+function Nav() {
   return (
     <div>
       <SNav className="nav">

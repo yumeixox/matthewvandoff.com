@@ -23,7 +23,7 @@ const SDiv = styled.div`
     position: absolute;
     transform: rotate(-90deg);
     left: -5.95em;
-    bottom: 6.45em;
+    bottom: 6em;
     -webkit-appearance: none;
     margin-left: 10px;
     border: 1px solid #40416a;

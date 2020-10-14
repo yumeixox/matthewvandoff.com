@@ -82,7 +82,7 @@ const Ssection = styled.section`
       grid-template-rows: 1fr;
 
       .left {
-        padding: 3rem 0 0 3rem;
+        padding: 0rem 0 0 3rem;
       }
       .right {
         display: flex;

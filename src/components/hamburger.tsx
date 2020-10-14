@@ -10,11 +10,11 @@ const Sbutton = styled.button`
 
 const Smenu = styled.div`
   width: 100vw;
-  height: 350px;
+  /* height: 350px; */
   font-size: 1.1rem;
   background: ${p => p.theme.jet};
   position: absolute;
-  top: 3.2rem;
+  top: 3.7rem;
   right: 0;
   color: white;
   opacity: 1;
@@ -30,7 +30,6 @@ const Smenu = styled.div`
     height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
   }
   a {
     width: 100%;
@@ -44,7 +43,7 @@ const Smenu = styled.div`
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 25%;
+    height: 100px;
     border-top: 1px solid grey; 
     border-bottom: 1px solid grey; 
   }
@@ -132,7 +131,7 @@ function Hamburger() {
               Contact
           </Scroll.Link>
           </li>
-          <li><Switch /></li>
+          {/* <li><Switch /></li> */}
         </ul>
       </Smenu>
     </div>

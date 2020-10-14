@@ -18,7 +18,7 @@ function TrackView() {
       <STrackView>
         <ButtonsHeader/>
         <Display/>
-        <VersionsTable />
+        <VersionsTable/>
       </STrackView>
   )
 }

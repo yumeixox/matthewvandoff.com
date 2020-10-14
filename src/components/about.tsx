@@ -35,7 +35,7 @@ const Ssection = styled.section`
     }
     .arrow {
       bottom: 5rem;
-      transform: rotate(180deg);
+      /* transform: rotate(180deg); */
     }
   }
 `

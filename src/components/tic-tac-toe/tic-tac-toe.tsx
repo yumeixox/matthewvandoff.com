@@ -52,7 +52,7 @@ const Sdiv = styled.div`
       font-family: 'Nothing You Could Do', cursive;
       position: absolute;
       left: 20%;
-      top: 12%;
+      top: 10%;
       text-transform: uppercase;
     }
     .faded {

@@ -6,13 +6,20 @@ import PlayButton from '../../common/buttons/play-button.jsx'
 import { MdStar, MdStarBorder } from 'react-icons/md'
 import { BsThreeDots, BsFolderCheck } from 'react-icons/bs'
 import IconButton from '@material-ui/core/IconButton'
-import OptionsMenu from './options-menu.jsx'
 import Tooltip from '@material-ui/core/Tooltip'
+import Amplitude from 'amplitudejs'
+import foggy from '../../../../assets/audio/foggy.mp3'
+import wand from '../../../../assets/audio/wand.mp3'
+import bleak from '../../../../assets/audio/bleak.mp3'
+import save from '../../../../assets/audio/save.mp3'
+import Loader from 'react-loader-spinner'
+import { FaHourglassEnd } from 'react-icons/fa'
 
 const SDiv = styled.div`
   margin: 1.5em 0 0 0;
   padding: 0.5em 0 0 0;
   border-top: 2px solid ${theme.blue};
+  box-sizing: border-box;
   
   .rdt_TableCol {
     color: ${theme.blue};
@@ -29,7 +36,7 @@ const SDiv = styled.div`
   }
   .loader svg {
     cursor: pointer;
-    fill: ${theme.green};
+    fill: ${theme.purple};
   }
   .stems-icon:hover {
     cursor: pointer;
@@ -59,38 +66,38 @@ const customStyles = {
 
 const versionsArr = [
   {
-    bounceName: "Good",
+    bounceName: "wand",
     stemsName: "Great",
     versionTitle: "Version 4",
-    duration: "3:18",
+    duration: "1:46",
     createdAt: "07-22-2020",
     versionNotes: "Ready for mix",
     versionSub: 1
   },
   {
-    bounceName: "Good",
+    bounceName: "foggy",
     stemsName: "Great",
     versionTitle: "Acoustic Version",
-    duration: "3:35",
+    duration: "1:06",
     createdAt: "07-20-2020",
     versionNotes: "",
     versionSub: 2
   },
   {
-    // bounceName: "Good",
+    bounceName: "bleak",
     stemsName: "Great",
     versionTitle: "Version 2",
-    duration: "3:18",
+    duration: "2:39",
     createdAt: "07-19-2020",
     versionNotes: "Added drums and bridge",
     currentVersion: 1,
     versionSub: 3
   },
   {
-    bounceName: "Good",
+    bounceName: "save",
     stemsName: "Great",
     versionTitle: "Version 1",
-    duration: "2:55",
+    duration: "1:36",
     createdAt: "06-23-2020",
     versionNotes: "",
     currentVersion: 1,
@@ -99,28 +106,53 @@ const versionsArr = [
 ]
 
 function VersionsTable() {
-  // const [showChangeCurrentVersion, setShowChangeCurrentVersion] = useState(false)
-  // const [showEditVersion, setShowEditVersion] = useState(false)
-  // const [showDeleteVersion, setShowDeleteVersion] = useState(false)
-  const [newSelectedVersion, setNewSelectedVersion] = useState(null)
-  const [menuPosition, setMenuPosition] = React.useState({
-    mouseX: null,
-    mouseY: null,
-  })
-
-  function handleMenuClick(e) {
-    setMenuPosition({
-      mouseX: event.clientX - 18,
-      mouseY: event.clientY - 4,
-    })
-    setNewSelectedVersion(e)
-  }
-  
+  const [ playing, setPlaying ] = useState(false)
+  const [ version, setVersion ] = useState(null)
   const columns = [
     {
       cell: (e) => {
+        let url
+        if (e.bounceName === "foggy") {
+          url = foggy
+        }
+        else if (e.bounceName === "wand") {
+          url = wand
+        }
+        else if (e.bounceName === "bleak") {
+          url = bleak
+        }
+        else if (e.bounceName === "save") {
+          url = save
+        }
+        const play = document.getElementById("play-pause")          
         if (e.bounceName) {
-          return <PlayButton version={e} type="version" color="blue" className="play-button"/>
+          return (
+            <div onClick={() => {              
+              if (version !== e) {                
+                Amplitude.stop()            
+                Amplitude.init({
+                  songs: [{ name: 'How To Talk To Computers', url: url }],
+                  callbacks: {
+                    play: () => {                      
+                      setPlaying(true)
+                    },
+                    pause: () => { setPlaying(false) }
+                  }
+                })
+                play.click()
+                setVersion(e)                
+              }
+              else {
+                play.click()
+              }
+            }}>
+              { (version === e && playing === true) ?
+                <Loader className="loader" type="Bars" height={30} width={30}/>
+                :
+                <PlayButton version={e} type="version" color="blue" className="play-button"/>                
+              }
+            </div>
+          )
         }
       },
       button: true,
@@ -180,25 +212,23 @@ function VersionsTable() {
               <Tooltip title="Current Version" placement="left">
                 <IconButton>
                   <MdStar
-                  color={theme.blue}
-                  size="1.35em" />
+                    color={theme.blue}
+                    size="1.35em" />
                 </IconButton>
               </Tooltip>
             ) : (
-              <Tooltip title="Mark as Current Version" placement="left" arrow>
-                <IconButton
-                 
-                >
-                  <MdStarBorder
-                  color={theme.blue}
-                  size="1.35em" />
-                </IconButton>
-              </Tooltip>
-            )}
+                <Tooltip title="Mark as Current Version" placement="left" arrow>
+                  <IconButton>
+                    <MdStarBorder
+                      color={theme.blue}
+                      size="1.35em" />
+                  </IconButton>
+                </Tooltip>
+              )}
             <IconButton>
               <BsThreeDots
-              color={theme.blue}
-              size="1.35em" />
+                color={theme.blue}
+                size="1.35em" />
             </IconButton>
           </div>
         )
@@ -208,7 +238,6 @@ function VersionsTable() {
       minWidth: '125px'
     },
   ]
-  
   return (
     <SDiv className="table-container">
       <DataTable
