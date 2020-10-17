@@ -13,10 +13,12 @@ const SDiv = styled.div`
     }
   }
   .volume-icon {
+    width: 1.2em;
   }
   .mute-icon {
     position: absolute;
     left: 0;
+    width: 1.2em;
   }
   .amplitude-volume-slider {
     display: none;
@@ -43,7 +45,7 @@ const SDiv = styled.div`
       width: 75%;
       height: 2px;
       cursor: pointer;
-      animate: 0.2s;
+      /* animate: 0.2s; */
     }
     &::-webkit-slider-thumb {
       height: 18px;
@@ -61,7 +63,7 @@ const SDiv = styled.div`
       width: 100%;
       height: 1px;
       cursor: pointer;
-      animate: 0.2s;
+      /* animate: 0.2s; */
       background: #cfd8dc;
     }
     &::-moz-range-thumb {
@@ -109,8 +111,8 @@ function Volume(props) {
   return (
     <SDiv>
       <div className="icon-container" onClick={handleIconClick}>
-        <FaVolumeUp size="1em" className={mute ? 'volume-icon hidden' : 'volume-icon'} />
-        <FaVolumeMute size="1em" className={mute ? 'mute-icon' : 'mute-icon hidden'} />
+        <FaVolumeUp className={mute ? 'volume-icon hidden' : 'volume-icon'} />
+        <FaVolumeMute className={mute ? 'mute-icon' : 'mute-icon hidden'} />
       </div>
       <input
         type="range"

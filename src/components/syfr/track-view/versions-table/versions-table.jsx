@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import theme from '../../stylesheets/theme'
 import DataTable from 'react-data-table-component'
@@ -13,7 +13,6 @@ import wand from '../../../../assets/audio/wand.mp3'
 import bleak from '../../../../assets/audio/bleak.mp3'
 import save from '../../../../assets/audio/save.mp3'
 import Loader from 'react-loader-spinner'
-import { FaHourglassEnd } from 'react-icons/fa'
 
 const SDiv = styled.div`
   margin: 1.5em 0 0 0;
@@ -35,7 +34,6 @@ const SDiv = styled.div`
     justify-content: right;
   }
   .loader svg {
-    cursor: pointer;
     fill: ${theme.purple};
   }
   .stems-icon:hover {
@@ -47,6 +45,9 @@ const SDiv = styled.div`
     .rdt_TableRow {
       background: #44415d4f;
     }
+  }
+  .play-cell {
+    cursor: pointer;
   }
 `
 
@@ -108,48 +109,70 @@ const versionsArr = [
 function VersionsTable() {
   const [ playing, setPlaying ] = useState(false)
   const [ version, setVersion ] = useState(null)
-  const columns = [
+
+  useEffect(() => {    
+    Amplitude.init({
+      songs: [{ name: 'SYFR.STUDIO', url: '#' }],
+    })
+    Amplitude.pause()
+  }, [])
+
+  let columns = [
     {
       cell: (e) => {
-        let url
-        if (e.bounceName === "foggy") {
-          url = foggy
-        }
-        else if (e.bounceName === "wand") {
-          url = wand
-        }
-        else if (e.bounceName === "bleak") {
-          url = bleak
-        }
-        else if (e.bounceName === "save") {
-          url = save
-        }
         const play = document.getElementById("play-pause")          
         if (e.bounceName) {
           return (
-            <div onClick={() => {              
+            <div className="play-cell" onClick={() => {
+              let url
+              if (e.bounceName === "foggy") {
+                url = foggy
+              }
+              else if (e.bounceName === "wand") {
+                url = wand
+              }
+              else if (e.bounceName === "bleak") {
+                url = bleak
+              }
+              else if (e.bounceName === "save") {
+                url = save
+              }          
+
               if (version !== e) {                
-                Amplitude.stop()            
+                Amplitude.stop()
                 Amplitude.init({
                   songs: [{ name: 'How To Talk To Computers', url: url }],
                   callbacks: {
-                    play: () => {                      
+                    play: () => { 
                       setPlaying(true)
                     },
                     pause: () => { setPlaying(false) }
                   }
                 })
-                play.click()
-                setVersion(e)                
+                // Amplitude.pause()
+                setVersion(e)                        
+                if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|OperaMini/i.test(navigator.userAgent)) {
+                  play.dispatchEvent(new TouchEvent("touchend"))
+                }
+                else {
+                  play.click()
+                }
               }
-              else {
-                play.click()
+              else {                        
+                if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|OperaMini/i.test(navigator.userAgent)) {
+                  play.dispatchEvent(new TouchEvent("touchend"))
+                }
+                else {
+                  play.click()
+                }
               }
-            }}>
+            }}
+            
+            >
               { (version === e && playing === true) ?
                 <Loader className="loader" type="Bars" height={30} width={30}/>
                 :
-                <PlayButton version={e} type="version" color="blue" className="play-button"/>                
+                <PlayButton version={e} type="version" color="blue" className="play-button"/>
               }
             </div>
           )
@@ -187,57 +210,63 @@ function VersionsTable() {
       name: 'Time',
       selector: 'duration',
       sortable: true,
-      center: true,
-      width: '100px',
-      style: { 'padding-right': '30px' },
-    },
-    {
-      name: 'Created',
-      selector: 'createdAt',
-      sortable: true,
-      // format: (row) => row.createdAt.substr(5, 5) + '-' + row.createdAt.substr(0, 4),
+      // center: true,
+      width: '80px',
       compact: true,
-      width: '120px',
-    },
-    {
-      name: 'Notes',
-      selector: 'versionNotes',
-      minWidth: '400px',
-    },
-    {
-      cell: (e) => {
-        return (
-          <div className="options">
-            {e.versionSub === 1 ? (
-              <Tooltip title="Current Version" placement="left">
-                <IconButton>
-                  <MdStar
-                    color={theme.blue}
-                    size="1.35em" />
-                </IconButton>
-              </Tooltip>
-            ) : (
-                <Tooltip title="Mark as Current Version" placement="left" arrow>
+      // style: { 'padding-right': '30px' },
+    }
+  ]
+  
+  if (screen.width > 700) {
+    columns = columns.concat([
+      {
+        name: 'Created',
+        selector: 'createdAt',
+        sortable: true,
+        // format: (row) => row.createdAt.substr(5, 5) + '-' + row.createdAt.substr(0, 4),
+        compact: true,
+        width: '120px',
+      },
+      {
+        name: 'Notes',
+        selector: 'versionNotes',
+        minWidth: '400px',
+      },
+      {
+        cell: (e) => {
+          return (
+            <div className="options">
+              {e.versionSub === 1 ? (
+                <Tooltip title="Current Version" placement="left">
                   <IconButton>
-                    <MdStarBorder
+                    <MdStar
                       color={theme.blue}
                       size="1.35em" />
                   </IconButton>
                 </Tooltip>
-              )}
-            <IconButton>
-              <BsThreeDots
-                color={theme.blue}
-                size="1.35em" />
-            </IconButton>
-          </div>
-        )
+              ) : (
+                  <Tooltip title="Mark as Current Version" placement="left" arrow>
+                    <IconButton>
+                      <MdStarBorder
+                        color={theme.blue}
+                        size="1.35em" />
+                    </IconButton>
+                  </Tooltip>
+                )}
+              <IconButton>
+                <BsThreeDots
+                  color={theme.blue}
+                  size="1.35em" />
+              </IconButton>
+            </div>
+          )
+        },
+        button: true,
+        compact: true,
+        minWidth: '125px'
       },
-      button: true,
-      compact: true,
-      minWidth: '125px'
-    },
-  ]
+    ])
+  }
   return (
     <SDiv className="table-container">
       <DataTable

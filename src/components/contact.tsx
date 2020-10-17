@@ -29,7 +29,6 @@ const Sdiv = styled.div`
         padding: 0 0 0 0.5em;
       }
       a {
-        display: block;
         display: flex;
         align-items: center;
       }
@@ -76,7 +75,7 @@ const Sdiv = styled.div`
       margin: 1rem auto 0 auto;
       display: flex;
       background: #3f4764;
-      border: 2px dashed white;
+      border: 2px dashed lightgrey;
       border-radius: 5px;
       padding: 0.5em;
       justify-content: center;
@@ -121,6 +120,12 @@ const Sdiv = styled.div`
     }
     .equation {
       font-size: 1.7rem !important;
+    }
+  }
+
+  @media all and (max-width: 550px) {
+    .equation {
+      font-size: 1.4rem !important;
     }
   }
 `

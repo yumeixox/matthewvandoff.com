@@ -1,10 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
-import { MdPlayCircleOutline, MdPauseCircleOutline } from 'react-icons/md'
+import { MdPlayCircleOutline } from 'react-icons/md'
 
 const PlayIcon = styled(MdPlayCircleOutline)`
   transition: color 0.5s ease;
-  cursor: pointer;
+  /* cursor: pointer; */
   color: ${(props) => props.theme.blue};
 
   &:hover {

@@ -17,6 +17,7 @@ const styles = css`
     font-size: 16px;
     margin: 0 auto;
     box-sizing: border-box;
+    overflow-x: hidden;
     /* -webkit-font-smoothing: antialiased; */
   }
   body::-webkit-scrollbar {

@@ -47,6 +47,11 @@ const Smenu = styled.div`
     border-top: 1px solid grey; 
     border-bottom: 1px solid grey; 
   }
+  li:first-child, li:nth-child(2) {
+    border-bottom: none;
+  }
+  li:first-child {
+  }
   li:hover {
     cursor: pointer;
     background: ${p => p.theme.grey};

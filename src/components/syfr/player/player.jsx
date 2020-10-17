@@ -30,7 +30,7 @@ const SPlayer = styled.div`
     justify-content: space-between;
     align-items: center;
     width: 53px;
-    padding: 0 0.25em 0 0.4em;
+    padding: 0 0em 0 0.3em;
   }
   .progress-time-container {
     display: flex;
@@ -74,17 +74,36 @@ const SPlayer = styled.div`
     display: flex;
     justify-content: center;
   }
+  @media all and (max-width: 570px) {
+    .control-container {
+      justify-content: start;
+      width: 4vw;
+    }
+    .progress-time-container {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      font-size: 14px;
+    }
+    .meta-container {
+      display: none;
+    }
+    .volume {
+      display: none;
+    }
+  }
 `
 
 function Player() {
-  useEffect(() => {
-    Amplitude.init({
-      songs: [{ name: 'SYFR.STUDIO', url: '#' }],      
-    })
-    return () => {
-      Amplitude.stop()
-    }
-  })
+  // useEffect(() => {
+  //   Amplitude.init({
+  //     songs: [{ name: 'SYFR.STUDIO', url: '#' }],      
+  //   })
+  //   Amplitude.pause()
+  //   // return () => {
+  //   //   Amplitude.stop()
+  //   // }
+  // }, [])
 
   function handleProgressClick(e) {
     const offset = e.currentTarget.getBoundingClientRect()
@@ -100,7 +119,9 @@ function Player() {
         <div className="player-main">
           <div className="control-container">
             <Play/>
-            <Volume amplitude={Amplitude} />
+            <div className="volume">
+              <Volume amplitude={Amplitude}/>
+            </div>
           </div>
 
           <div className="progress-time-container">

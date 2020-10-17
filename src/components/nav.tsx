@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import styled from 'styled-components'
-import Switch from './switch'
 import * as Scroll from 'react-scroll'
 import Hamburger from './hamburger'
+import './stylesheets/glitch.scss'
 
 const Snav = styled.nav`
   .main {
     box-sizing: border-box;
     width: 100vw;
-    height: 7vh;
+    height: 8vh;
     position: fixed;    
     display: flex;
     flex-direction: row;
@@ -17,12 +17,13 @@ const Snav = styled.nav`
     z-index: 99;
     padding: 0 3rem;
     transform: scale(1);
-    background: ${p => p.theme.jet};
+    background: black;
     transition: background-color 1s ease;
     user-select: none;
   }
   .top {
     background: transparent;
+    border: none;
   }
   .name {
     font-size: 1.75rem;
@@ -54,7 +55,7 @@ const Snav = styled.nav`
   }
   .options li:hover {
     cursor: pointer;
-    background: #343232;
+    background: #080808;
   }
   .active {
     text-decoration: line-through;
@@ -75,7 +76,6 @@ const Snav = styled.nav`
       display: block;
       padding: 0.15em 0em 0 0;
     }
-  
   }
   @media all and (max-width: 570px) {
     .name {

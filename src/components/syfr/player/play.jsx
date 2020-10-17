@@ -4,10 +4,7 @@ import { FaPlay, FaPause } from 'react-icons/fa'
 
 const SDiv = styled.div`
   position: relative;
-
-  &:hover {
-    cursor: pointer;
-  }
+  cursor: pointer;
   &.amplitude-playing {
     .play-icon {
       opacity: 0;
@@ -21,9 +18,16 @@ const SDiv = styled.div`
   .pause-icon {
     position: absolute;
     left: 0;
+    width: 0.9em;
   }
   .play-icon {
     padding-left: 0.15em;
+    width: 0.85em;
+  }
+  @media all and (max-width: 600px) {
+    .play-icon {
+      /* width: 1em; */
+    }
   }
 `
 
@@ -33,8 +37,8 @@ function Play() {
     className="amplitude-play-pause"
     id="play-pause"
     >
-      <FaPlay size="0.85em" className="play-icon" />
-      <FaPause size="0.9em" className="pause-icon" />
+      <FaPlay className="play-icon" />
+      <FaPause className="pause-icon" />
     </SDiv>
   )
 }

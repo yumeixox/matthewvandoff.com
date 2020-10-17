@@ -18,7 +18,7 @@ const Sdiv = styled.div`
       font-size: 75px;
       font-family: 'Nothing You Could Do', cursive;
       margin-bottom: 40px;
-      padding: 3rem 0 0 0;
+      padding: 5rem 0 0 0;
     }
     .grid {
       display: flex;

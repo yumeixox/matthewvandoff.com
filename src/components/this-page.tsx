@@ -8,7 +8,7 @@ const Sdiv = styled.div`
   height: 50vh;
   width: 100%;
   section {
-    padding: 3rem 0 0 3rem;
+    padding: 2rem 0 0 2rem;
   }
   h1 {
     font-size: 2.25rem;
@@ -20,7 +20,7 @@ const Sdiv = styled.div`
     width: 45vw;
     color: white;
   }
-  .github-icon {
+  .icon {
     height: 25px;
     width: 25px;
   }
@@ -43,7 +43,12 @@ const Sdiv = styled.div`
       width: 90%;
     }
     a {
-      font-size: 0.8rem;
+      padding: 1em 0 0 0;
+    }
+    em {
+      /* display: block; */
+      width: 80%;
+      overflow-wrap: break-word;
     }
   }
 `
@@ -57,7 +62,7 @@ function ThisPage() {
         It also uses AWS Lambda + SES to send the emails.
         You can check out the source code here:
         </p>
-        <a href="https://github.com/yumeixox/matthewvandoff.com" target="_blank"><AiFillGithub className="github-icon"/><em>https://github.com/yumeixox/matthewvandoff.com</em></a>      
+        <a href="https://github.com/yumeixox/matthewvandoff.com" target="_blank"><AiFillGithub className="icon" /><em>https://github.com/yumeixox/matthewvandoff.com</em></a>
       </section>
     </Sdiv>
   )

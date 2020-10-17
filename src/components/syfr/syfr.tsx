@@ -10,7 +10,6 @@ const Ssection = styled.section`
   background: black;
   position: relative;
   height: 141vh;
-  width: 100%;
   .container {
     margin: 0 auto;
     height: 100%;
@@ -18,12 +17,12 @@ const Ssection = styled.section`
 
   .overlay {
     box-sizing: border-box;
-    background: black;
+    background: linear-gradient(90deg, black 40%, rgba(0, 0, 0, 0.7));
     height: 100%;
     width: 100%;
     position: absolute;
     z-index: 10;
-    opacity: 0.98;
+    /* opacity: 0.58; */
     transition: opacity 1s ease-out;
     
     .overlay-container {

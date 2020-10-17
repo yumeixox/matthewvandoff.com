@@ -26,10 +26,10 @@ const SDiv = styled.div`
   }
   @media all and (max-width: 570px) {
     .title {
-      font-size: 1.5em;
+      font-size: 1.7em;
     }
     .genre {
-      font-size: 0.85em;
+      font-size: 0.95em;      
     }
   }
 `
