@@ -1,8 +1,10 @@
-# personal
+# matthewvandoff.com
 
-Empty project.
+Hey, welcome to the repo for my personal web development portfolio!
 
-## Building and running on localhost
+It's pretty much a standard React project but the SYFR demo and the Tic-Tac-Toe parts were pretty much dragged in as external React components. Because of that, some things may seem a bit awkward. Like the random use of jQuery in the Tic-Tac-Toe part. You can find all the components in the src directory.
+
+## Want to run this project locally?
 
 First install dependencies:
 
@@ -22,24 +24,13 @@ To create a production build:
 npm run build-prod
 ```
 
-To create a development build:
-
-```sh
-npm run build-dev
-```
-
 ## Running
 
 Open the file `dist/index.html` in your browser
 
-## Testing
-
-To run unit tests:
-
-```sh
-npm test
-```
-
 ## Credits
 
-Made with [createapp.dev](https://createapp.dev/)
+Credits for the awesome text scramble and glitch effects goes to these code pens, respectively:
+
+https://codepen.io/soulwire/pen/mErPAK
+https://codepen.io/cipherbeta/pen/YLdVjw
