@@ -15,7 +15,7 @@ const Sdiv = styled.div`
     position: relative;
     h1 {
       text-align: center;
-      font-size: 75px;
+      font-size: 55px;
       font-family: 'Nothing You Could Do', cursive;
       margin-bottom: 40px;
       padding: 5rem 0 0 0;
@@ -25,8 +25,8 @@ const Sdiv = styled.div`
       flex-wrap: wrap;
       list-style: none;
       background: transparent;
-      width: 380px;
-      height: 380px;
+      width: 320px;
+      height: 320px;
       margin: 0 auto;
       padding: 0;
     }
@@ -48,7 +48,7 @@ const Sdiv = styled.div`
       pointer-events: none;
     }
     .mark {
-      font-size: 125px;
+      font-size: 100px;
       font-family: 'Nothing You Could Do', cursive;
       position: absolute;
       left: 20%;
@@ -85,7 +85,8 @@ const Sdiv = styled.div`
       display: flex;
       flex-direction: row;
       justify-content: center;
-      top: 40%;
+      align-items: center;
+      top: 65%;
       z-index: 2;
       width: 100%;
       margin: 0 0 3rem 0;
@@ -148,6 +149,19 @@ const Sdiv = styled.div`
     .cell:nth-child(9) {
       border-right: 0;
       border-bottom: 0;
+    }
+    .thinking {
+      display: block;
+      opacity: 0;
+      width: 100%;      
+      font-size: 2rem;
+      font-style: italic;
+      margin: 0 auto;
+      position: absolute;
+      text-align: center;
+      z-index: 10;      
+      top: 21vh;
+      color: white;
     }
   }
 
@@ -214,7 +228,7 @@ const Sdiv = styled.div`
       opacity: 0;
   }
 
-  @media all and (min-width: 920px) {
+  @media all and (min-width: 520px) {
     .overlay-container {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -249,13 +263,22 @@ const Sdiv = styled.div`
       font-size: 145px !important;
       /* top: 3vh !important; */
     }
+    .replay-container {
+      top: 45% !important;
+    }
+    #tic-tac-toe {
+      h1 {
+        font-size: 75px;
+      }
+    }
   }
 `
 
 function TicTacToe() {
   const [open, setOpen] = useState(false)
+  
   return (
-    <Sdiv>
+    <Sdiv id="ttt-container">
       <link href="https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&display=swap" rel="stylesheet"/>
       <div className={open ? "overlay disabled" : "overlay"}>
         <div className="overlay-container">
@@ -263,9 +286,9 @@ function TicTacToe() {
             <h1>AI is born</h1>
             <p className="summary">
               There are 255,168 possible games of Tic-tac-toe, excluding symmetry.
-              Is it possible to make an unbeatable Tic-tac-toe computer? Certainly.
-              Minimax is a recursive algorithm which, by analyzing the outcomes of each possible move
-              on the board, chooses the optimal next move.
+              Is it possible to create an unbeatable Tic-tac-toe computer?
+              Minimax is a recursive algorithm which, by analyzing the outcomes of each possible game,
+              chooses the optimal next move.
               It's purpose is to essentially minimize the possibility of the worst outcomes.
               Care to test your luck?
             </p>
@@ -286,6 +309,7 @@ function TicTacToe() {
       </div>
       <div id="tic-tac-toe">
         <h1>Tic Tac Toe</h1>
+        <h2 className="thinking" id="thinking">thinking...</h2>
         <figure className="ttt"></figure>
       </div>
     </Sdiv>

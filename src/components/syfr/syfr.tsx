@@ -17,7 +17,7 @@ const Ssection = styled.section`
 
   .overlay {
     box-sizing: border-box;
-    background: linear-gradient(90deg, black 40%, rgba(0, 0, 0, 0.7));
+    background: linear-gradient(90deg, black 40%, rgba(0, 0, 0, 0.65));
     height: 100%;
     width: 100%;
     position: absolute;

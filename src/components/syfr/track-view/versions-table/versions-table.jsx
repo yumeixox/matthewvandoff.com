@@ -69,25 +69,25 @@ const versionsArr = [
   {
     bounceName: "wand",
     stemsName: "Great",
-    versionTitle: "Version 4",
+    versionTitle: "Magic Wand",
     duration: "1:46",
     createdAt: "07-22-2020",
     versionNotes: "Ready for mix",
-    versionSub: 1
+    versionSub: 2
   },
   {
     bounceName: "foggy",
     stemsName: "Great",
-    versionTitle: "Acoustic Version",
+    versionTitle: "Foggy",
     duration: "1:06",
     createdAt: "07-20-2020",
-    versionNotes: "",
-    versionSub: 2
+    versionNotes: "Need to add melody to B section",
+    versionSub: 1
   },
   {
     bounceName: "bleak",
     stemsName: "Great",
-    versionTitle: "Version 2",
+    versionTitle: "Bleak",
     duration: "2:39",
     createdAt: "07-19-2020",
     versionNotes: "Added drums and bridge",
@@ -97,10 +97,10 @@ const versionsArr = [
   {
     bounceName: "save",
     stemsName: "Great",
-    versionTitle: "Version 1",
+    versionTitle: "Saved",
     duration: "1:36",
     createdAt: "06-23-2020",
-    versionNotes: "",
+    versionNotes: "Needs bassline",
     currentVersion: 1,
     versionSub: 4
   }

@@ -12,15 +12,14 @@ class View {
   }
 
   bindEvents() {
-    $(".grid").on("click", ".cell", (event) => {
+    $(".grid").on("click", ".cell", (event) => {      
       $(event.target).append(`<strong class="mark">${this.game.board.currentMark()}</strong>`)
       this.makeMove(event.target)
-
       $(event.target).addClass("noHover")
     })
   }
 
-  makeMove(sq) {
+  async makeMove(sq) {
     const $sq = $(sq)
     let row = parseInt($sq.attr("data-pos")[0])
     let col = parseInt($sq.attr("data-pos")[2])
@@ -31,19 +30,35 @@ class View {
     if (winner !== null) {
       this.endGame(winner)
     }
-
-    if (this.comp === true && this.game.board.current_turn % 2 !== 0 && winner === null) {
-      this.makeCompMove()
+    if (this.comp === true && this.game.board.current_turn % 2 !== 0 && winner === null) {   
+      this.makeCompMove()      
     }
   }
 
   makeCompMove() {
-    let move = this.game.comp.takeTurn()
-    let row = parseInt(move[0])
-    let col = parseInt(move[1])
-
-    let sq = $(`.cell[data-pos='${row},${col}']`)
-    sq.trigger("click")
+    if(this.game.board.current_turn === 1) {      
+      $('#ttt-container').css('pointer-events','none')
+      $('#thinking').css('opacity','1')
+      setTimeout(() => {
+        let move=this.game.comp.takeTurn()
+        let row=parseInt(move[0])
+        let col=parseInt(move[1])
+        let sq=$(`.cell[data-pos='${row},${col}']`)
+        sq.trigger("click")
+        setTimeout(() => {
+          $('#ttt-container').css('pointer-events','auto')
+          $('#thinking').css('opacity','0')
+        }, 200)
+        
+      }, 500)
+    }
+    else {
+      let move=this.game.comp.takeTurn()
+      let row=parseInt(move[0])
+      let col=parseInt(move[1])
+      let sq=$(`.cell[data-pos='${row},${col}']`)
+      sq.trigger("click")
+    }
   }
 
   endGame(winner) {
@@ -73,7 +88,7 @@ class View {
   }
 
   displayReplayButton() {
-    $("#tic-tac-toe").prepend("<div class='replay-container'><strong class='replay'>↻</strong></div>")
+    $("#tic-tac-toe").prepend("<div class='replay-container'><strong class='replay'><em>↻</em></strong></div>")
     $(".replay").click((event) => { this.resetBoard() })
   }
 
