@@ -32,5 +32,5 @@ Open the file `dist/index.html` in your browser
 
 Credits for the awesome text scramble and glitch effects goes to these code pens, respectively:
 
-https://codepen.io/soulwire/pen/mErPAK
+https://codepen.io/soulwire/pen/mErPAK  
 https://codepen.io/cipherbeta/pen/YLdVjw

@@ -170,7 +170,7 @@ function Contact() {
         <p className="email"><FiMail className="icon"/><em>mvandoff@gmail.com</em></p>
         <p className="github"><a href="https://github.com/yumeixox" target="_blank"><AiFillGithub className="icon"/><em>https://github.com/yumeixox</em></a></p>
         <p className="linkedin"><a href="https://www.linkedin.com/in/matthew-vandoff" target="_blank"><FaLinkedin className="icon" /><em>https://www.linkedin.com/in/matthew-vandoff</em></a></p>
-        <p className="resume"><a href="https://s3.amazonaws.com/www.matthewvandoff.com/resume.pdf" target="_blank"><TiDocumentText className="icon"/><em>Resume</em></a></p> 
+        <p className="resume"><a href="https://www.matthewvandoff.com/resume.pdf" target="_blank"><TiDocumentText className="icon"/><em>Resume</em></a></p> 
       </div>
 
       <div className="right">

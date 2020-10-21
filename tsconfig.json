@@ -12,6 +12,7 @@
       "jsx": "react",
       "allowSyntheticDefaultImports": true,
       "noUnusedLocals": false,
+      "esModuleInterop": true
   },
   "include": [
       "./src/**/*",
